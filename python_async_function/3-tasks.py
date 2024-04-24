@@ -4,9 +4,9 @@ Defines a function to create an asyncio.Task from wait_random function.
 """
 
 import asyncio
-from typing import Callable
 
 wait_random = __import__('0-basic_async_syntax').wait_random
+
 
 def task_wait_random(max_delay: int):
     """
