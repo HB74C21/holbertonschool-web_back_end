@@ -1,26 +1,17 @@
 #!/usr/bin/env python3
 """
-
+Module containing a Server class to paginate a database of popular baby names
 """
 
 import csv
 import math
-from typing import List, Tuple
+from typing import List
 
-
-def index_range(page: int, page_size: int) -> Tuple(int, int):
-    """
-    Calculate start and end indexes for pagination.
-    """
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size
-
-    return start_index, end_index
+index_range = __import__('0-simple_helper_function').index_range
 
 
 class Server:
-    """
-    Server class to paginate a database of popular baby names.
+    """Server class to paginate a database of popular baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -28,8 +19,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """
-        Cached dataset
+        """Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -43,13 +33,14 @@ class Server:
         """
         Retrieve a page of data from the dataset.
         """
-        assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page_size > 0
+        assert type(page, int) and page > 0
+        assert type(page_size, int) and page_size > 0
 
-        start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
+        total_rows = len(dataset)
+        start_index, end_index = index_range(page, page_size, total_rows)
 
-        if start_index >= len(dataset):
+        if start_index >= total_rows:
             return []
 
         return dataset[start_index:end_index]
