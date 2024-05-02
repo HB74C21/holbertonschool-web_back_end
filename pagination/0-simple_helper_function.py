@@ -6,7 +6,7 @@ function named index_range that takes two integer arguments page and page_size
 from typing import Tuple
 
 
-def index_range(page, page_size)-> Tuple[int, int]:
+def index_range(page, page_size) -> Tuple[int, int]:
     """
     Calculate start and end indexes for pagination.
     """
