@@ -10,15 +10,6 @@ from typing import List
 index_range = __import__('0-simple_helper_function').index_range
 
 
-def index_range(page: int, page_size: int) -> tuple:
-    """
-    Returns a tuple containing the start index and end index for pagination.
-    """
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size
-    return (start_index, end_index)
-
-
 class Server:
     """Server class to paginate a database of popular baby names."""
     DATA_FILE = "Popular_Baby_Names.csv"
