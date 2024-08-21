@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Module containing a Server class to paginate a database of popular baby names
+"""
+
 import csv
 import math
 from typing import List, Dict, Any
